@@ -1,0 +1,25 @@
+micronaut:
+  application:
+    name:  api-park-management
+  server:
+    port: 3003
+    context-path: /api/gestao-estacionamento/v1
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/gestao_estacionamento
+    username: estapar
+    password: postgres
+    db-type: postgres
+    dialect: POSTGRES
+    driverClassName: org.postgresql.Driver
+
+  jpa:
+    default:
+      properties:
+        hibernate:
+          show_sql: true
+          format_sql: true
+          hbm2ddl:
+            auto: update
+          dialect: org.hibernate.dialect.PostgresSQLDialect
