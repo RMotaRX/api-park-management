@@ -4,8 +4,11 @@ import static java.util.Objects.nonNull;
 
 import br.com.estapar.parkmanagement.api.domain.entities.enums.ParkingSessionStatus;
 import br.com.estapar.parkmanagement.api.domain.types.financial.Money;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -55,10 +58,18 @@ public class ParkingSession {
   private LocalDateTime exitTime;
 
   @NotNull
-  @Column(name = "preco_entrada", precision = 10, scale = 2, nullable = false)
+  @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "amount", column = @Column(name = "preco_entrada", precision = 10, scale = 2)),
+      @AttributeOverride(name = "currency", column = @Column(name = "moeda_entrada", length = 3))
+  })
   private Money entryPrice;
 
-  @Column(name = "preco_final", precision = 10, scale = 2)
+  @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "amount", column = @Column(name = "preco_final", precision = 10, scale = 2)),
+      @AttributeOverride(name = "currency", column = @Column(name = "moeda_final", length = 3))
+  })
   private Money finalPrice;
 
   @Enumerated(EnumType.STRING)

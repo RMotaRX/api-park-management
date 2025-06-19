@@ -2,8 +2,10 @@ package br.com.estapar.parkmanagement.api.domain.types.geographic;
 
 import static java.util.Objects.nonNull;
 
+import jakarta.persistence.Embeddable;
 import java.math.BigDecimal;
 
+@Embeddable
 public record Coordinates(
     BigDecimal latitude,
     BigDecimal longitude

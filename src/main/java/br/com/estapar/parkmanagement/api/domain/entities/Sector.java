@@ -3,7 +3,10 @@ package br.com.estapar.parkmanagement.api.domain.entities;
 import static java.util.Objects.nonNull;
 
 import br.com.estapar.parkmanagement.api.domain.types.financial.Money;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -30,7 +33,11 @@ public class Sector {
   private String id;
 
   @NotNull
-  @Column(name = "preco_base", precision = 10, scale = 2, nullable = false)
+  @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "amount", column = @Column(name = "preco_base", precision = 10, scale = 2)),
+      @AttributeOverride(name = "currency", column = @Column(name = "moeda", length = 3))
+  })
   private Money basePrice;
 
   @NotNull

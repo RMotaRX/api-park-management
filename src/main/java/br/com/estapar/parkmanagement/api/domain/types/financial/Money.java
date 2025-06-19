@@ -2,12 +2,14 @@ package br.com.estapar.parkmanagement.api.domain.types.financial;
 
 import static java.util.Objects.nonNull;
 
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
 
+@Embeddable
 public record Money(
     @NotNull
     @DecimalMin(value = "0.0", message = "Amount must be positive")

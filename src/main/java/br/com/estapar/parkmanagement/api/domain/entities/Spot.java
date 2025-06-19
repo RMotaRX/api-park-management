@@ -43,7 +43,7 @@ public class Spot {
 
   @NotNull
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_vaga", nullable = false)
+  @JoinColumn(name = "id_setor", nullable = false)
   private Sector sector;
 
   @Column(name = "ocupada", nullable = false)

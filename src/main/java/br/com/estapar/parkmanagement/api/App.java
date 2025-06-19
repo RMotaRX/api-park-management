@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.info.*;
 public class App {
 
     public static void main(String[] args) {
+        System.setProperty("micronaut.server.port", "3003");
         Micronaut.run(App.class, args);
     }
 }
